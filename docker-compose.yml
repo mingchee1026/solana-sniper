@@ -1,0 +1,55 @@
+version: '3'
+services:
+  app:
+    container_name: sniper-app
+    restart: always
+    build: .
+    # depends_on:
+    #   - postgres
+    environment:
+      NODE_ENV: production
+      HOST: ${HOST}
+      PORT: ${PORT}
+
+      DB_PGPASSWORD: ${DB_PGPASSWORD}
+      DB_PGUSER: ${DB_PGUSER}
+      DB_PGDATABASE: ${DB_PGDATABASE}
+      DB_PGHOST: ${DB_PGHOST}
+      DB_PGPORT: ${DB_PGPORT}
+      DB_PGSSLMODE: ${DB_PGSSLMODE}
+
+      HELIUS_URL: ${HELIUS_URL}
+
+      MAINNET_CLUSTER_HTTPS: ${MAINNET_CLUSTER_HTTPS}
+      MAINNET_CLUSTER_WSS: ${MAINNET_CLUSTER_WSS}
+
+      HELIUS_MAINNET_STAKED_CLUSTER_API_KEY: ${HELIUS_MAINNET_STAKED_CLUSTER_API_KEY}
+      MAINNET_STAKED_CLUSTER_HTTPS: ${MAINNET_STAKED_CLUSTER_HTTPS}
+      MAINNET_STAKED_CLUSTER_WSS: ${MAINNET_STAKED_CLUSTER_WSS}
+
+      WALLET_PRIV_BASE_58: ${WALLET_PRIV_BASE_58}
+      EXCHANGE_SOL_WALLET: ${EXCHANGE_SOL_WALLET}
+
+      EXCHANGE_FEE: ${EXCHANGE_FEE}
+
+      # DB_USER: ${DB_USER}
+      # DB_PASSWORD: ${DB_PASSWORD}
+      # DB_HOST: ${DB_HOST}
+      # DB_NAME: ${DB_NAME}
+      # DB_PORT: ${DB_PORT}
+    ports:
+      - '${PORT}:${PORT}'
+    # volumes:
+    #   - .:/app/
+    #   - /app/node_modules
+
+  # postgres:
+  #   container_name: postgres
+  #   restart: always
+  #   image: postgres:14
+  #   ports:
+  #     - "${DB_PORT}:5432"
+  #   environment:
+  #     POSTGRES_USER: ${DB_PGUSER}
+  #     POSTGRES_PASSWORD: ${DB_PGPASSWORD}
+  #     POSTGRES_DB: ${DB_PGDATABASE}
