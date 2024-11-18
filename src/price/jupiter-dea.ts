@@ -1,17 +1,6 @@
-import {
-  Connection,
-  ComputeBudgetProgram,
-  PublicKey,
-  Signer,
-  SystemProgram,
-  TransactionMessage,
-  TransactionInstruction,
-  VersionedTransaction,
-  AddressLookupTableAccount,
-} from '@solana/web3.js';
+import {Connection, PublicKey} from '@solana/web3.js';
 import {
   createJupiterApiClient,
-  DefaultApi,
   ResponseError,
   QuoteGetRequest,
   QuoteResponse,
