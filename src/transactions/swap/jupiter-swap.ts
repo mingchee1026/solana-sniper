@@ -132,12 +132,12 @@ export async function getSwapTransactionByJupiter(
       payerKey: payer.publicKey,
       recentBlockhash: recentBlockhash.blockhash,
       instructions: [
-        ComputeBudgetProgram.setComputeUnitPrice({
-          microLamports: 12_000_000,
-        }),
-        ComputeBudgetProgram.setComputeUnitLimit({
-          units: 80000, // TODO
-        }),
+        // ComputeBudgetProgram.setComputeUnitPrice({
+        //   microLamports: 12_000_000,
+        // }),
+        // ComputeBudgetProgram.setComputeUnitLimit({
+        //   units: 80000, // TODO
+        // }),
 
         // ! HANDLING SOL/WSOL TOKEN
         SystemProgram.createAccountWithSeed({
