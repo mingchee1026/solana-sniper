@@ -1,5 +1,6 @@
 import * as cpmm from './raydium-cpmm';
 import * as amm from './raydium-amm';
+import * as jup from './jupiter-dea';
 
 /**
  * Compute the output amount for a swap operation on a specified DEX (Decentralized Exchange).
@@ -41,8 +42,11 @@ export async function computeAmountOut(
         outputTokenMint,
         amountIn
       );
-
     default:
-      throw new Error('Invalid dex input: DEX not supported.');
+      return await jup.computeAmountOut(
+        inputTokenMint,
+        outputTokenMint,
+        amountIn
+      );
   }
 }
