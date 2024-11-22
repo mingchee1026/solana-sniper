@@ -17,6 +17,19 @@ router.post(
   validate(orderHandler.createValidator),
   orderHandler.create
 );
+
+router.post(
+  '/order/limit',
+  validate(orderHandler.createValidator),
+  orderHandler.createLimit
+);
+
+router.post(
+  '/order/dca',
+  validate(orderHandler.createValidator),
+  orderHandler.createDCA
+);
+
 // router.post(
 //   '/order/track/transaction',
 //   validate(orderHandler.checkConfirmationValidator),
@@ -81,6 +94,33 @@ router.post(
   '/user/setSlippage',
   validate(userHandler.setSelectedSlippageValidator),
   userHandler.setSelectedSlippage
+);
+// Limit Order
+router.post(
+  '/user/setLimitInAmount',
+  validate(userHandler.setSelectedLimitInAmountValidator),
+  userHandler.setSelectedLimitInAmount
+);
+router.post(
+  '/user/setLimitOutAmount',
+  validate(userHandler.setSelectedLimitOutAmountValidator),
+  userHandler.setSelectedLimitOutAmount
+);
+// DCA Order
+router.post(
+  '/user/setDCAInAmount',
+  validate(userHandler.setSelectedDCAInAmountValidator),
+  userHandler.setSelectedDCAInAmount
+);
+router.post(
+  '/user/setDCAInAmountPerCycle',
+  validate(userHandler.setSelectedDCAInAmountPerCycleValidator),
+  userHandler.setSelectedDCAInAmountPerCycle
+);
+router.post(
+  '/user/setDCACycleSecondsApart',
+  validate(userHandler.setSelectedDCACycleSecondsApartValidator),
+  userHandler.setSelectedDCACycleSecondsApart
 );
 
 export default router;
