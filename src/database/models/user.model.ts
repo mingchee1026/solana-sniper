@@ -33,6 +33,12 @@ class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare selectedSellAmount: string;
   declare selectedTokenUsdPrice: string;
   declare selectedSlippage: number;
+  // Jupiter Limit Order
+  declare selectedLimitOutAmount: string;
+  // Jupiter DCA Order
+  declare selectedDCAInAmount: number;
+  declare selectedDCAInAmountPerCycle: number;
+  declare selectedDCACycleSecondsApart: number;
   // these two can be undefined during creation
   declare createdAt: CreationOptional<Date>;
   declare updatedAt: CreationOptional<Date>;
@@ -145,6 +151,28 @@ class UserModel {
           type: DataTypes.INTEGER,
           allowNull: false,
           defaultValue: 1500,
+        },
+        // Jupiter Limit Order
+        selectedLimitOutAmount: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          defaultValue: 0,
+        },
+        // Jupiter DCA Order
+        selectedDCAInAmount: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          defaultValue: 0,
+        },
+        selectedDCAInAmountPerCycle: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          defaultValue: 0,
+        },
+        selectedDCACycleSecondsApart: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          defaultValue: 0,
         },
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,

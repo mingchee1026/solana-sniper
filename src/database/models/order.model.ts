@@ -30,6 +30,10 @@ class Order extends Model<
   declare networkFee: string;
   declare orderType: 'swap' | 'limit' | 'dca';
   declare orderDirection: 'buy' | 'sell';
+  // DCA Order Public Key
+  declare limitOrder: string | null;
+  // DCA Order Public Key
+  declare dcaPubKey: string | null;
   declare succeeded: boolean;
   declare status:
     | 'created'
@@ -138,6 +142,16 @@ class OrderModel {
         orderDirection: {
           type: DataTypes.ENUM('buy', 'sell'),
           allowNull: false,
+        },
+        // Limit Order
+        limitOrder: {
+          type: DataTypes.STRING(110),
+          allowNull: true,
+        },
+        // DCA Order Public Key
+        dcaPubKey: {
+          type: DataTypes.STRING(110),
+          allowNull: true,
         },
         succeeded: {
           type: DataTypes.BOOLEAN,
