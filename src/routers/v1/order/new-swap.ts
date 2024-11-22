@@ -141,7 +141,11 @@ export const create = async (
       ourFeeInLamports,
       priorityFee,
       txExecutor,
-      recentBlockhash
+      recentBlockhash,
+      // Limit order
+      null,
+      // DCA pubkey
+      null
     );
     // --------------------------------------- END -------------------------------------- //
     // ! Following was tested, although it seems efficient but it took ~21.872 seconds

@@ -94,7 +94,9 @@ export const transactionalCreateOrderAndSendToNetwork = async (
   ourFeeInLamports: bigint,
   priorityFee: number,
   txExecutor: DefaultTransactionExecutor,
-  recentBlockhash: BlockHash
+  recentBlockhash: BlockHash,
+  limitOrder: string | null,
+  dcaPubKey: PublicKey | null
 ) => {
   // This transaction blocks other requests.
   return await db.sequelize.transaction(
@@ -243,6 +245,10 @@ export const transactionalCreateOrderAndSendToNetwork = async (
       user.selectedPriceImpact = 0;
       user.selectedSellAmount = '0';
       user.selectedTokenUsdPrice = '0';
+      // DCA Orfer
+      user.selectedDCAInAmount = 0;
+      user.selectedDCAInAmountPerCycle = 0;
+      user.selectedDCACycleSecondsApart = 0;
       // ---------------------------------- END ----------------------------------
 
       await Promise.all([
@@ -260,6 +266,10 @@ export const transactionalCreateOrderAndSendToNetwork = async (
             networkFee: '0',
             orderType: user.selectedOrderType,
             orderDirection: user.selectedOrderDirection,
+            // Limit Order String
+            limitOrder,
+            // DCA Public key
+            dcaPubKey: dcaPubKey?.toBase58(),
             succeeded: false,
             status: 'submitted',
             details: {
