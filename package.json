@@ -31,6 +31,7 @@
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0",
     "@jup-ag/api": "^6.0.29",
+    "@jup-ag/dca-sdk": "3.0.0-beta.0",
     "@native-to-anchor/buffer-layout": "^0.1.0",
     "@project-serum/serum": "^0.13.65",
     "@raydium-io/raydium-sdk-v2": "^0.1.68-alpha",
